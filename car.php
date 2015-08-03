@@ -1,5 +1,6 @@
 <?php
 $user_price = $_GET["price"];
+$user_miles = $_GET["miles"];
 
 
 class Car
@@ -51,7 +52,7 @@ $cars = array($honda, $ford, $toyoda);
 
         foreach ($cars as $car) {
             $miles = $car->getMiles();
-            if ($car->price <= $user_price) {
+            if ($car->price <= $user_price && $miles <= $user_miles) {
                 echo "<img src='$car->image'> $car->make_model " . "$" . "$car->price" . " " . "$miles ";
             }else{
                 continue;
