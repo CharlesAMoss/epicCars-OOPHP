@@ -5,10 +5,10 @@ $user_miles = $_GET["miles"];
 
 class Car
 {
-    public $make_model;
-    public $price;
+    private $make_model;
+    private $price;
     private $miles;
-    public $image;
+    private $image;
 
      function __construct($make_model, $price, $miles, $image){
        $this->make_model= $make_model;
@@ -18,15 +18,30 @@ class Car
 
      }
 
-     function getMiles()
-     {
+//Getters
+     function getMake(){
+       return $this->make_model;
+     }
+     function getPrice(){
+       return $this->price;
+     }
+     function getMiles(){
        return $this->miles;
      }
+     function getImage(){
+       return $this->image;
+     }
+
+//Setters
+    function setMiles($new_miles){
+      $this->miles = $new_miles;
+      return $new_miles;
+    }
 }
 
 $honda = new Car("Honda", 2000.00, 200000, "image/honda.jpg");
 $ford = new Car("Truck", 3000.00, 30, "image/ford.jpg");
-$toyoda = new Car("4 door", 14000.00, 60000, "image/yoda.jpg");
+$toyoda = new Car("4 door", 14000.00, 600, "image/yoda.jpg");
 
 $cars = array($honda, $ford, $toyoda);
 ?>
@@ -88,13 +103,17 @@ $cars = array($honda, $ford, $toyoda);
 
 
         foreach ($cars as $car) {
+            $make = $car->getMake();
+            $price = $car->getPrice();
             $miles = $car->getMiles();
-            if ($car->price <= $user_price && $miles <= $user_miles) {
+            $image = $car->getImage();
+
+            if ($price <= $user_price && $miles <= $user_miles) {
               echo "<div class='car'>";
-                echo "<img src='$car->image'>";
+                echo "<img src='$image'>";
                 echo "<ul>";
-                echo "<li class='make'>$car->make_model</li>";
-                echo "<li class='price'>$ $car->price</li>";
+                echo "<li class='make'>$make</li>";
+                echo "<li class='price'>$ $price</li>";
                 echo "<li class='miles'>$miles Miles</li>";
                 echo "</ul>";
               echo "</div>";
