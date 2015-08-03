@@ -36,15 +36,52 @@ $cars = array($honda, $ford, $toyoda);
   <head>
     <title>Cars Drive Fast</title>
 
-  <style>
-    img{
-      max-width: 300px;
-    }
-  </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <style>
+
+      h1 {
+        text-align: center;
+      }
+      img{
+        width: 300px;
+      }
+      .car {
+
+        float: left;
+        margin: 0 20px 20px 0;
+
+      }
+
+      li {
+
+        list-style: none;
+
+      }
+
+      .make, .price, .mlies {
+
+
+
+      }
+
+
+
+    </style>
+
   </head>
+
   <body>
 
-    <h1> I'm the h1 </h1>
+    <header class="page-header">
+
+        <h1>Stop Walking today!</h1>
+
+    </header>
+
+    <div class="container">
+
+
 
 
     <?php
@@ -53,7 +90,14 @@ $cars = array($honda, $ford, $toyoda);
         foreach ($cars as $car) {
             $miles = $car->getMiles();
             if ($car->price <= $user_price && $miles <= $user_miles) {
-                echo "<img src='$car->image'> $car->make_model " . "$" . "$car->price" . " " . "$miles ";
+              echo "<div class='car'>";
+                echo "<img src='$car->image'>";
+                echo "<ul>";
+                echo "<li class='make'>$car->make_model</li>";
+                echo "<li class='price'>$ $car->price</li>";
+                echo "<li class='miles'>$miles Miles</li>";
+                echo "</ul>";
+              echo "</div>";
             }else{
                 continue;
             }
@@ -63,7 +107,7 @@ $cars = array($honda, $ford, $toyoda);
 
       ?>
 
-
+    </div>
 
   </body>
 </html>
