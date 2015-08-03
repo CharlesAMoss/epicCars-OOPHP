@@ -9,6 +9,12 @@ include('car.php');
 <html>
   <head>
     <title>Cars Drive Fast</title>
+
+  <style>
+    img{
+      max-width: 300px;
+    }
+  </style>
   </head>
   <body>
 
@@ -19,7 +25,7 @@ include('car.php');
 
       foreach ($cars as $car) {
         $miles = $car->getMiles();
-        echo "$car->make_model " . "$" . "$car->price" . " " . "$miles ";
+        echo "<img src='$car->image'> $car->make_model " . "$" . "$car->price" . " " . "$miles ";
 
 
       }
